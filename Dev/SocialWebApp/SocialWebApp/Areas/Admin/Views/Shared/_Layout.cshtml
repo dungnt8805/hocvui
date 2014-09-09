@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title :: Admin</title>
+
+
+    <link href="@Url.Content("~/assets/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/css/ionicons.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/css/morris/morris.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/css/iCheck/all.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/css/fullcalendar/fullcalendar.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/css/AdminBB.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/css/admin.css")" rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content("~/assets/js/jquery.1.10.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery-ui-1.10.3.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap/bootstrap-datetimepicker.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap/bootstrap-datetimepicker.pt-vi.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap/typeahead.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/moment.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/daterangepicker.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/ckeditor/ckeditor.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.nestable.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.form.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/plugins/fullcalendar/fullcalendar.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/plugins/jqueryKnob/jquery.knob.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/plugins/morris/morris.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/plugins/iCheck/icheck.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.charcounter.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/AdminBB/app.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/AdminBB/dashboard.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/admin.js")" type="text/javascript"></script>
+
+</head>
+
+<body class="skin-black fixed">
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+        <aside class="left-side sidebar-offcanvas">
+        </aside>
+        <aside class="right-side">
+            <section class="content-header">
+                @RenderBody()
+            </section>
+            <hr />
+            <!-- Footer -->
+            <footer align="center">
+                <div class="copyright">
+                    Copyright © 2013. All rights reserved
+                </div>
+            </footer>
+        </aside>
+    </div>
+    <div class="modal fade" id="modal_display" aria-hidden="true" tabindex="-1" role="dialog" aria-labelledby="displayModal">
+    </div>
+    <div class="modal fade" id="modal_newpost" aria-hidden="true" tabindex="-1" role="dialog" aria-labelledby="newPostModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Tạo bài viết mới</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form method="post" action="/admin/news/create" autocomplete="off" role="form" id="quick-add-post">
+                            <!-- Post Title -->
+                            <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
+                                <label class="control-label" for="title">Tiêu đề bài viết</label>
+                                <input class="form-control" type="text" name="title" id="post_title" value="{{ Input::old('title') }}" placeholder="bắt buộc..." />
+                            </div>
+                            <button type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-floppy-disk"></span>Tạo mới</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- Upload image -->
+    <div class="modal fade" id="modal_updateMedia" aria-hidden="true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Thư viện</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="mediaContent"></div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            jQuery('#datetimepicker').datetimepicker({
+                format: 'yyyy-MM-dd hh:mm:ss ',
+                language: 'pt-BR'
+            });
+
+            jQuery('input#tagName').typeahead({
+                name: 'tagname',
+                local: ['Bình BEER', 'BBCMS'],
+                valueKey: 'name',
+                remote: {
+                    url: '/admin/tags/ajaxlist?keyword=%QUERY',
+                }
+            });
+
+            CKEDITOR.replace('textareabox', { toolbar: 'CusToolbar', height: '500px' });
+
+            $("#category-list").mouseleave(function () {
+                $("#category-list a").css("display", "none");
+            });
+
+            $("#category-list label").hover(function () {
+                $("#category-list label a").css("display", "none");
+                $(this).children("a").css("display", "inline-block");
+            });
+        });
+    </script>
+</body>
+</html>

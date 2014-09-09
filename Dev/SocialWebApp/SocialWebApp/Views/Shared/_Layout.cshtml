@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <title>@ViewBag.Title Học vui</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="1800" http-equiv="refresh" />
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="applie-mobile-web-app-title" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta name="description" content="@ViewBag.Description" />
+    <meta content="" itemprop="thumbnailUrl" property="og:image" />
+    <link sizes="72x72" href="" rel="apple-touch-icon-precomposed">
+    <link sizes="144x144" href="" rel="apple-touch-icon-precomposed">
+    <link sizes="57x57" href="" rel="apple-touch-icon-precomposed">
+    <link sizes="114x114" href="" rel="apple-touch-icon-precomposed">
+    <link href="" rel="nokia-touch-icon">
+    <link sizes="1x1" href="" rel="apple-touch-icon-precomposed">
+    <link rel="canonical" href="" />
+
+    @* style *@
+    <link href="@Url.Content("~/assets/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/assets/css/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/assets/css/style.css")" rel="stylesheet" />
+    @* end style *@
+
+    @* javascript *@
+    <script src="@Url.Content("~/assets/js/jquery.1.10.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery-ui-1.10.3.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/bootstrap/typeahead.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/jquery.form.js")" type="text/javascript"></script>
+    @* end javascript *@
+
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="container">
+                <div class="top_header">
+                    <div class="logo col-md-4 sol-sm-4">
+                        <a href="/" title="Trang chủ">
+                            <img src="@Url.Content("~/assets/images/logo.png")" alt="logo" />
+                        </a>
+                    </div>
+                    @* end logo *@
+                    <div class="timkiem col-md-4 col-sm-4">
+                        @using (Html.BeginForm())
+                        {
+                            <input type="text" name="keywords" placeholder="Bạn hãy nhập thông tin tìm kiếm" required />
+                            <input type="submit" value="" />
+                        }
+                    </div>
+                    @* end tim kiem *@
+                    <div class="hoidap col-md-4 col-sm-4">
+                        <ul>
+                            <li>
+                                <img src="@Url.Content("~/assets/images/a1.png")" /><a href="#">Blog</a>
+                            </li>
+                            <li>
+                                <img src="@Url.Content("~/assets/images/hoidap.png")" /><a href="#">Hỏi đáp</a>
+                            </li>
+                            <li>
+                                @Html.ActionLink("Đăng kí","Create","Auth")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Đăng nhập","Login","Auth")
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                @*end top header*@
+                @* menu *@
+                <nav class="menu">
+                    <ul class="menu">
+                        <li><a href="#">Nấu ăn</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">Chế Biến</a></li>
+                                <li><a href="#">Nguyên Liệu</a></li>
+                                <li><a href="#">Món Ăn Gia Đình</a>
+                                    <ul class="menu-3">
+                                        <li><a href="#">Món ăn hàng ngày</a></li>
+                                        <li><a href="#">Món ăn theo mùa</a>
+                                            <ul class="menu-4">
+                                                <li><a href="#">Bữa cơm gia đình</a></li>
+                                                <li><a href="#">Bữa chính</a></li>
+                                                <li><a href="#">Bữa phụ, đồ ăn vặt</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Món ăn theo khẩu vị</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Đồ Uống</a></li>
+                                <li><a href="#">Thực Đơn</a></li>
+                                <li><a href="#">Món Ăn Thế Giới</a></li>
+                                <li><a href="#">Dụng cụ làm bếp</a></li>
+                                <li><a href="#">Mẹo Vặt Và Bí Quyết</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Sức khỏe</a></li>
+                        <li><a href="#">Làm đẹp</a></li>
+                        <li><a href="#">Công nghệ</a></li>
+                        <li><a href="#">Mẹ Và Bé</a></li>
+                        <li><a href="#">Tình cảm</a></li>
+                        <li><a href="#">Thời trang</a></li>
+                        <li><a href="#">Nhà cửa</a></li>
+                        <li><a href="#">Luật pháp</a></li>
+                        <li><a href="#">Chụp ảnh</a></li>
+                        <li><a href="#">Du lịch</a></li>
+                        <li><a href="#">Học nhạc</a></li>
+                        <li><a href="#">TMĐT Adayroi</a></li>
+                        <li><a href="#">Kỹ năng mềm</a></li>
+                    </ul>
+                </nav>
+                @* end menu *@
+            </div>
+
+        </header>
+        <section class="main container" style="height: 300px">
+            <article class="content col-md-8 col-sm-8">
+                @RenderBody()
+            </article>
+            <aside class="right col-md-4 col-sm-4">
+                <p style="padding-top: 100px;">aside</p>
+            </aside>
+            
+        </section>
+        <footer class="container">
+            <div class="top_footer col-md-12 col-sm-12">
+                <img src="@Url.Content("~/assets/images/logo.png")" />
+            </div>
+            <div class="top_footer_right col-md-3 col-sm-3" style="float: right">
+                <img src="@Url.Content("~/assets/images/trochuyen.png")" alt="a">
+                <p style="float: right">Hãy trò chuyện với chúng tôi</p>
+            </div>
+            <div class="content_footer">
+                <div class="chamsoc col-md-3 col-sm-3">
+                    <p>Chăm sóc khách hàng</p>
+                    <ul>
+                        <li><a href="#">Những câu hỏi thường gặp</a></li>
+                        <li><a href="#">Phương thức thanh toán</a></li>
+                        <li><a href="#">Hướng dẫn cài đặt</a></li>
+                        <li><a href="#">Giao nhận hàng</a></li>
+                        <li><a href="#">Tra cứu đơn hàng trực tuyến</a></li>
+                        <li><a href="#">Hướng dãn đổi trả</a></li>
+                        <li><a href="#">Hướng dẫn bảo hành</a></li>
+                    </ul>
+                </div>
+                <!--end Chăm sóc khách hàng-->
+                <div class="chamsoc col-md-3 col-sm-3">
+                    <p>VỀ AÐÂYRỒI </p>
+                    <ul>
+                        <li><a href="#">Bán hàng cho doanh nghiệp</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Ðiều khoản mua bán hàng hóa</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Báo chí</a></li>
+                        <li><a href="#">Ađâyrồi  Blog</a></li>
+                        <li><a href="#">Bán hàng cùng Ađâyrồi </a></li>
+                    </ul>
+                </div>
+                <!--end VỀ AÐÂYRỒI-->
+                <div class="chamsoc col-md-3 col-sm-3">
+                    <p>Thông tin liên hệ</p>
+                    <ul>
+                        <li><a href="#">
+                            <img src="images/lienhe1.png" />T26 Time City,456 Minh Khai, Hà Nội</a></li>
+                        <li><a href="#">
+                            <img src="images/lienhe2.png" />hotro@vinecom.vn</a></li>
+                        <li><a href="#">
+                            <img src="images/lienhe3.png" />Hotline/; 1900 5555</a></li>
+                        <p style="margin-top: 40px;">Follow Us</p>
+                        <ul>
+                            <li style="float: left">
+                                <img src="images/twiter.png" /></li>
+                            <li style="float: left">
+                                <img src="images/like.png" /></li>
+                            <li style="float: left">
+                                <img src="images/g+.png" /></li>
+                        </ul>
+                    </ul>
+                </div>
+                <!--end VỀ thông tin liên hệ-->
+                <div class="chamsoc col-md-3 col-sm-3">
+                    <img src="@Url.Content("~/assets/images/footer1.png")" />
+                    <img src="images/footer2.png" />
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
